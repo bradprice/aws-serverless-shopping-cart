@@ -25,13 +25,18 @@ pipeline {
   }
   stages {
     // uncomment and modify the following step for running the unit-tests
-    // stage('test') {
-    //   steps {
-    //     sh '''
-    //       # trigger the tests here
-    //     '''
-    //   }
-    // }
+    stage('test') {
+      steps {
+        echo 'Hello World'
+        sh '''
+          uname -r
+          docker --version
+          aws --version
+          sam --version
+          docker run hello-world    
+        '''
+      }
+    }
 
     stage('build-and-deploy-feature') {
       // this stage is triggered only for feature branches (feature*),
