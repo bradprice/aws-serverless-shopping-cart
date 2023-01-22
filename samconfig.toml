@@ -1,0 +1,10 @@
+version = 0.1
+[default]
+[default.deploy]
+[default.deploy.parameters]
+stack_name = "shopping-cart-nested-stack"
+s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-lyoy85qn60k4"
+s3_prefix = "shopping-cart-nested-stack"
+region = "us-east-1"
+capabilities = "CAPABILITY_IAM CAPABILITY_AUTO_EXPAND"
+image_repositories = []
