@@ -49,6 +49,8 @@ pipeline {
         }
       }
       steps {
+        echo "Test"
+        sh 'uname -a'
         sh 'sam build --template ${SAM_TEMPLATE} --use-container'
         withAWS(
             credentials: env.PIPELINE_USER_CREDENTIAL_ID,
