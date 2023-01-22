@@ -49,7 +49,7 @@ pipeline {
         }
       }
       steps {
-        echo "Test"
+        echo "Test1"
         sh 'uname -a'
         sh 'sam build --template ${SAM_TEMPLATE} --use-container'
         withAWS(
@@ -83,6 +83,8 @@ pipeline {
         }
       }
       steps {
+        echo "Test2"
+        sh 'uname -a'
         sh 'sam build --template ${SAM_TEMPLATE} --use-container'
         withAWS(
             credentials: env.PIPELINE_USER_CREDENTIAL_ID,
@@ -132,6 +134,8 @@ pipeline {
             region: env.TESTING_REGION,
             role: env.TESTING_PIPELINE_EXECUTION_ROLE,
             roleSessionName: 'testing-deployment') {
+          echo "Test3"
+          sh 'uname -a'
           sh '''
             sam deploy --stack-name ${TESTING_STACK_NAME} \
               --template packaged-testing.yaml \
@@ -178,6 +182,8 @@ pipeline {
             region: env.PROD_REGION,
             role: env.PROD_PIPELINE_EXECUTION_ROLE,
             roleSessionName: 'prod-deployment') {
+          echo "Test4"
+          sh 'uname -a'
           sh '''
             sam deploy --stack-name ${PROD_STACK_NAME} \
               --template packaged-prod.yaml \
